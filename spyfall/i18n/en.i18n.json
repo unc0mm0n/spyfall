@@ -1,21 +1,21 @@
 {
     "ui": {
-        "welcome to spyfall": "Welcome to Spyfall",
+        "welcome to spyfall": "Welcome to Spyfilm",
         "new game": "New Game",
         "join game": "Join Game",
         "waiting for players": "Waiting For Players...",
         "access code": "Access code",
-        "join my spyfall game": "Join my Spyfall game!",
+        "join my spyfall game": "Join my Spyfilm game!",
         "start game": "Start Game",
         "leave game": "Leave Game",
         "show hide": "show/hide",
         "you are the spy": "You are the spy!",
         "you are not the spy": "You are <strong>not</strong> the spy!",
-        "the location": "The location",
+        "the location": "The film",
         "your role": "Your role",
         "players": "Players",
         "first": "1<span>st</span>",
-        "location reference": "Location Reference",
+        "location reference": "Film Reference",
         "end game": "End Game",
         "enter your name": "Enter your name",
         "create game": "Create",
@@ -23,290 +23,120 @@
         "enter an access code": "Enter an access code",
         "invalid access code": "Sorry, no game was found with the access code you provided!",
         "join": "Join",
-        "footer": "<a href='http://international.hobbyworld.ru/catalog/25-spyfall/' target='_blank'>Spyfall</a> designed by Alexandr Ushan, published by <a href='http://international.hobbyworld.ru/' target='_blank'>Hobby World</a>"
+        "footer": "Spyfilm concept by <a target='_blank' href='http://paullicino.tumblr.com/post/140330571161/spyfilm-a-very-modest-spyfall-mod'>Paul Dean</a><br><a href='http://international.hobbyworld.ru/catalog/25-spyfall/' target='_blank'>Spyfall</a> designed by Alexandr Ushan, published by <a href='http://international.hobbyworld.ru/' target='_blank'>Hobby World</a>"
     },
     "locations": {
-        "airplane": "Airplane",
-        "bank": "Bank",
-        "beach": "Beach",
-        "cathedral": "Cathedral",
-        "circus tent": "Circus Tent",
-        "corporate party": "Corporate Party",
-        "crusader army": "Crusader Army",
-        "casino": "Casino",
-        "day spa": "Day Spa",
-        "embassy": "Embassy",
-        "hospital": "Hospital",
-        "hotel": "Hotel",
-        "military base": "Military Base",
-        "movie studio": "Movie Studio",
-        "ocean liner": "Ocean Liner",
-        "passenger train": "Passenger Train",
-        "pirate ship": "Pirate Ship",
-        "polar station": "Polar Station",
-        "police station": "Police Station",
-        "restaurant": "Restaurant",
-        "school": "School",
-        "service station": "Service Station",
-        "space station": "Space Station",
-        "submarine": "Submarine",
-        "supermarket": "Supermarket",
-        "theater": "Theater",
-        "university": "University",
-        "world war ii squad": "World War II Squad",
+        "the force awakens": "The Force Awakens",
+        "toy story": "Toy Story",
+        "aliens": "Aliens",
+        "harry potter": "Harry Potter",
+        "snow white and the seven dwarfs": "Snow White and the Seven Dwarfs",
+        "blade runner": "Blade Runner",
+        "back to the future": "Back to the Future",
+        "the princess bride": "The Princess Bride",
+        "ghostbusters": "Ghostbusters",
+        "die hard": "Die Hard",
+        "the wizard of oz": "The Wizard of Oz",
+        "being john malkovich": "Being John Malkovich",
         "roles": {
-            "airplane": {
-                "first class passenger": "First Class Passenger",
-                "air marshall": "Air Marshal",
-                "mechanic": "Mechanic",
-                "air hostess": "Air Hostess",
-                "copilot": "Co-Pilot",
-                "captain": "Captain",
-                "economy class passenger": "Economy Class Passenger"
+            "the force awakens": {
+                "rey": "Rey",
+                "finn": "Finn",
+                "general leia": "General Leia",
+                "captain phasma": "Captain Phasma",
+                "poe dameron": "Poe Dameron",
+                "kylo ren": "Kylo Ren",
+                "bb8": "BB-8"
             },
-            "bank": {
-                "armored car driver": "Armored Car Driver",
-                "manager": "Manager",
-                "consultant": "Consultant",
-                "robber": "Robber",
-                "security guard": "Security Guard",
-                "teller": "Teller",
-                "customer": "Customer"
+            "toy story": {
+                "woody": "Woody",
+                "jessie": "Jessie",
+                "buzz lightyear": "Buzz Lightyear",
+                "mr potato head": "Mr. Potato Head",
+                "mrs potato head": "Mrs. Potato Head",
+                "little bo peep": "Little Bo Peep",
+                "slinky dog": "Slinky Dog"
             },
-            "beach": {
-                "beach waitress": "Beach Waitress",
-                "kite surfer": "Kite Surfer",
-                "lifeguard": "Lifeguard",
-                "thief": "Thief",
-                "beach photographer": "Beach Photographer",
-                "ice cream truck driver": "Ice Cream Truck Driver",
-                "beach goer": "Beach Goer"
-            },
-            "cathedral": {
-                "priest": "Priest",
-                "beggar": "Beggar",
-                "sinner": "Sinner",
-                "tourist": "Tourist",
-                "sponsor": "Sponsor",
-                "chorister": "Chorister",
-                "parishioner": "Parishioner"
-            },
-            "circus tent": {
-                "acrobat": "Acrobat",
-                "animal trainer": "Animal Trainer",
-                "magician": "Magician",
-                "fire eater": "Fire Eater",
-                "clown": "Clown",
-                "juggler": "Juggler",
-                "visitor": "Visitor"
-            },
-            "corporate party": {
-                "entertainer": "Entertainer",
-                "manager": "Manager",
-                "unwanted guest": "Unwanted Guest",
-                "owner": "Owner",
-                "secretary": "Secretary",
-                "delivery boy": "Delivery Boy",
-                "accountant": "Accountant"
-            },
-            "crusader army": {
-                "monk": "Monk",
-                "imprisoned saracen": "Imprisoned Saracen",
-                "servant": "Servant",
+            "aliens": {
+                "ripley": "Ripley",
+                "newt": "Newt",
+                "corporal hicks": "Corporal Hicks",
                 "bishop": "Bishop",
-                "squire": "Squire",
-                "archer": "Archer",
-                "knight": "Knight"
+                "private vasquez": "Private Vasquez",
+                "a facehugger": "A Facehugger",
+                "the alien queen": "The Alien Queen"
             },
-            "casino": {
-                "bartender": "Bartender",
-                "head security guard": "Head Security Guard",
-                "bouncer": "Bouncer",
-                "manager": "Manager",
-                "hustler": "Hustler",
-                "dealer": "Dealer",
-                "gambler": "Gambler"
+            "harry potter": {
+                "harry potter": "Harry Potter",
+                "hermione granger": "Hermione Granger",
+                "ron weasley": "Ron Weasley",
+                "ginny weasley": "Ginny Weasley",
+                "severus snape": "Severus Snape",
+                "minerva mcgonagall": "Minerva McGonagall",
+                "albus dumbledore": "Albus Dumbledore"
             },
-            "day spa": {
-                "stylist": "Stylist",
-                "masseuse": "Masseuse",
-                "manicurist": "Manicurist",
-                "makeup artist": "Makeup Artist",
-                "dermatologist": "Dermatologist",
-                "beautician": "Beautician",
-                "customer": "Customer"
+            "snow white and the seven dwarfs": {
+                "doc": "Doc",
+                "grumpy": "Grumpy",
+                "sneezy": "Sneezy",
+                "dopey": "Dopey",
+                "happy": "Happy",
+                "bashful": "Bashful",
+                "sleepy": "Sleepy"
             },
-            "embassy": {
-                "security guard": "Security Guard",
-                "secretary": "Secretary",
-                "ambassador": "Ambassador",
-                "tourist": "Tourist",
-                "refugee": "Refugee",
-                "diplomat": "Diplomat",
-                "government official": "Government Official"
+            "blade runner": {
+                "deckard": "Deckard",
+                "batty": "Batty",
+                "priss": "Priss",
+                "rachael": "Rachael",
+                "gaff": "Gaff",
+                "leon": "Leon",
+                "zhora": "Zhora"
             },
-            "hospital": {
-                "nurse": "Nurse",
-                "doctor": "Doctor",
-                "anesthesiologist": "Anesthesiologist",
-                "intern": "Intern",
-                "therapist": "Therapist",
-                "surgeon": "Surgeon",
-                "patient": "Patient"
+            "back to the future": {
+                "marty mcfly": "Marty McFly",
+                "jennifer parker": "Jennifer Parker",
+                "dr emmett brown": "Dr. Emmett Brown",
+                "biff tannen": "Biff Tannen",
+                "lorraine baines": "Lorraine Baines",
+                "george mcfly": "George McFly",
+                "einstein the dog": "Einstein the Dog"
             },
-            "hotel": {
-                "doorman": "Doorman",
-                "security guard": "Security Guard",
-                "manager": "Manager",
-                "housekeeper": "Housekeeper",
-                "bartender": "Bartender",
-                "bellman": "Bellman",
-                "customer": "Customer"
+            "the princess bride": {
+                "westley": "Westley",
+                "buttercup": "Buttercup",
+                "inigo montoya": "Inigo Montoya",
+                "fezzik": "Fezzik",
+                "vizzini": "Vizzini",
+                "miracle max": "Miracle Max",
+                "prince humperdinck": "Prince Humperdinck"
             },
-            "military base": {
-                "deserter": "Deserter",
-                "colonel": "Colonel",
-                "medic": "Medic",
-                "sniper": "Sniper",
-                "officer": "Officer",
-                "tank engineer": "Tank Engineer",
-                "soldier": "Soldier"
+            "ghostbusters": {
+                "peter venkman": "Peter Venkman",
+                "egon spengler": "Egon Spengler",
+                "winston zeddemore": "Winston Zeddemore",
+                "ray stantz": "Ray Stantz",
+                "janine": "Janine",
+                "dana barrett": "Dana Barrett",
+                "slimer": "Slimer"
             },
-            "movie studio": {
-                "stunt man": "Stunt Man",
-                "sound engineer": "Sound Engineer",
-                "camera man": "Camera Man",
-                "director": "Director",
-                "costume artist": "Costume Artist",
-                "producer": "Producer",
-                "actor": "Actor"
+            "die hard": {
+                "john mclane": "John Mclane",
+                "hans gruber": "Hans Gruber",
+                "a terrorist": "A Terrorist"
             },
-            "ocean liner": {
-                "cook": "Cook",
-                "captain": "Captain",
-                "bartender": "Bartender",
-                "musician": "Musician",
-                "waiter": "Waiter",
-                "mechanic": "Mechanic",
-                "rich passenger": "Rich Passenger"
+            "the wizard of oz": {
+                "dorothy": "Dorothy",
+                "glinda": "Glinda",
+                "the tin man": "The Tin Man",
+                "the lion": "The Lion",
+                "the scarecrow": "The Scarecrow",
+                "toto": "Toto",
+                "the wicked witch of the west": "The Wicked Witch of the West"
             },
-            "passenger train": {
-                "mechanic": "Mechanic",
-                "border patrol": "Border Patrol",
-                "train attendant": "Train Attendant",
-                "restaurant chef": "Restaurant Chef",
-                "train driver": "Train Driver",
-                "stoker": "Stoker",
-                "passenger": "Passenger"
-            },
-            "pirate ship": {
-                "cook": "Cook",
-                "slave": "Slave",
-                "cannoneer": "Cannoneer",
-                "tied up prisoner": "Tied Up Prisoner",
-                "cabin boy": "Cabin Boy",
-                "brave captain": "Brave Captain",
-                "sailor": "Sailor"
-            },
-            "polar station": {
-                "medic": "Medic",
-                "expedition leader": "Expedition Leader",
-                "biologist": "Biologist",
-                "radioman": "Radioman",
-                "hydrologist": "Hydrologist",
-                "meteorologist": "Meteorologist",
-                "geologist": "Geologist"
-            },
-            "police station": {
-                "detective": "Detective",
-                "lawyer": "Lawyer",
-                "journalist": "Journalist",
-                "criminalist": "Criminalist",
-                "archivist": "Archivist",
-                "criminal": "Criminal",
-                "patrol officer": "Patrol Officer"
-            },
-            "restaurant": {
-                "musician": "Musician",
-                "bouncer": "Bouncer",
-                "hostess": "Hostess",
-                "head chef": "Head Chef",
-                "food critic": "Food Critic",
-                "waiter": "Waiter",
-                "customer": "Customer"
-            },
-            "school": {
-                "gym teacher": "Gym Teacher",
-                "principal": "Principal",
-                "security guard": "Security Guard",
-                "janitor": "Janitor",
-                "cafeteria lady": "Cafeteria Lady",
-                "maintenance man": "Maintenance Man",
-                "student": "Student"
-            },
-            "service station": {
-                "manager": "Manager",
-                "tire specialist": "Tire Specialist",
-                "biker": "Biker",
-                "car owner": "Car Owner",
-                "car wash operator": "Car Wash Operator",
-                "electrician": "Electrician",
-                "auto mechanic": "Auto Mechanic"
-            },
-            "space station": {
-                "engineer": "Engineer",
-                "alien": "Alien",
-                "pilot": "Pilot",
-                "commander": "Commander",
-                "scientist": "Scientist",
-                "doctor": "Doctor",
-                "space tourist": "Space Tourist"
-            },
-            "submarine": {
-                "cook": "Cook",
-                "commander": "Commander",
-                "sonar technician": "Sonar Technician",
-                "electronics technician": "Electronics Technician",
-                "radioman": "Radioman",
-                "navigator": "Navigator",
-                "sailor": "Sailor"
-            },
-            "supermarket": {
-                "cashier": "Cashier",
-                "butcher": "Butcher",
-                "janitor": "Janitor",
-                "security guard": "Security Guard",
-                "food sample demonstrator": "Food Sample Demonstrator",
-                "shelf stocker": "Shelf Stocker",
-                "customer": "Customer"
-            },
-            "theater": {
-                "coat check lady": "Coat Check Lady",
-                "prompter": "Prompter",
-                "cashier": "Cashier",
-                "director": "Director",
-                "actor": "Actor",
-                "crew man": "Crew Man",
-                "audience member": "Audience Member"
-            },
-            "university": {
-                "graduate student": "Graduate Student",
-                "professor": "Professor",
-                "dean": "Dean",
-                "psychologist": "Psychologist",
-                "maintenance man": "Maintenance Man",
-                "janitor": "Janitor",
-                "student": "Student"
-            },
-            "world war ii squad": {
-                "resistance fighter": "Resistance Fighter",
-                "radioman": "Radioman",
-                "scout": "Scout",
-                "medic": "Medic",
-                "cook": "Cook",
-                "imprisoned nazi": "Imprisoned Nazi",
-                "soldier": "Soldier"
-            }   
+            "being john malkovich": {
+                "john malkovich": "John Malkovich"
+            }
         }
     }
 }
