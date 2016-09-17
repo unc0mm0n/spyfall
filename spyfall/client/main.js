@@ -140,9 +140,20 @@ function generateNewPlayer(gameID, name){
 
 function resetUserState(){
   var player = getCurrentPlayer();
+  var game = getCurrentGame();
 
   if (player){
-    Players.remove(player._id);
+    var playerID = player._id;
+    Players.remove(playerID);
+
+    if (game && game.host == playerID) {
+      var newPlayer = Players.findOne({'gameID': game._id});
+      if (newPlayer){
+        Games.update(game._id, {$set: { host:newPlayer._id}});
+      } else {
+        Games.update(game._id, {$set: { host:null}});
+      }
+    }
   }
 
   Session.set("gameID", null);
@@ -176,14 +187,9 @@ function trackGameState () {
 
 function leaveGame () {  
   GAnalytics.event("game-actions", "gameleave");
-  var player = getCurrentPlayer();
 
   Session.set("currentView", "startMenu");
-  Players.remove(player._id);
-  console.log(Players);
-  console.log(getCurrentGame());
-
-  Session.set("playerID", null);
+  resetUserState();
 }
 
 function hasHistoryApi () {
@@ -273,7 +279,6 @@ Template.startMenu.helpers({
 
 Template.startMenu.rendered = function () {
   GAnalytics.pageview("/");
-
   resetUserState();
 };
 
@@ -292,8 +297,6 @@ Template.createGame.events({
     var player = generateNewPlayer(gameID, playerName);
     
     Games.update(gameID, {$set: { hostLock: event.target.hostLock.checked, host:player._id}});
-    console.log(Games.findOne(gameID));
-    console.log(player);
 
     Meteor.subscribe('games', game.accessCode);
 
@@ -351,6 +354,10 @@ Template.joinGame.events({
       if (game) {
         Meteor.subscribe('players', game._id);
         player = generateNewPlayer(game._id, playerName);
+
+        if (game.host === null) {
+          Games.update(game._id, {$set: {host: player._id}});
+        }
 
         if (game.state === "inProgress") {
           var default_role = game.location.roles[game.location.roles.length - 1];
@@ -445,8 +452,11 @@ Template.lobby.events({
     $(".qrcode-container").toggle();
   },
   'click .btn-remove-player': function (event) {
-    var playerID = $(event.currentTarget).data('player-id');
-    Players.remove(playerID);
+    var game = getCurrentGame();
+    if ((!game.hostLock) || getCurrentPlayer()._id === game.host) {
+      var playerID = $(event.currentTarget).data('player-id');
+      Players.remove(playerID);
+    }
   },
   'click .btn-edit-player': function (event) {
     var game = getCurrentGame();
@@ -518,7 +528,6 @@ Template.gameView.events({
     var game = getCurrentGame();
 
     if ((!game.hostLock) || getCurrentPlayer()._id === game.host) {
-      console.log(game);
       GAnalytics.event("game-actions", "gameend");
 
       Games.update(game._id, {$set: {state: 'waitingForPlayers'}});
