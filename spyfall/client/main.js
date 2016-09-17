@@ -115,18 +115,18 @@ function generateNewGame(){
     lengthInMinutes: 8,
     endTime: null,
     paused: false,
+    hostLock: null,
+    host: null,
     pausedTime: null
   };
 
   var gameID = Games.insert(game);
-  game = Games.findOne(gameID);
-
-  return game;
+  return gameID;
 }
 
-function generateNewPlayer(game, name){
+function generateNewPlayer(gameID, name){
   var player = {
-    gameID: game._id,
+    gameID: gameID,
     name: name,
     role: null,
     isSpy: false,
@@ -180,6 +180,8 @@ function leaveGame () {
 
   Session.set("currentView", "startMenu");
   Players.remove(player._id);
+  console.log(Players);
+  console.log(getCurrentGame());
 
   Session.set("playerID", null);
 }
@@ -285,20 +287,22 @@ Template.createGame.events({
       return false;
     }
 
-    var game = generateNewGame();
-    game.hostLock = event.target.hostLock.checked;
-
-    var player = generateNewPlayer(game, playerName);
-    game.host = player;
+    var gameID = generateNewGame();
+    var game = Games.findOne(gameID);
+    var player = generateNewPlayer(gameID, playerName);
+    
+    Games.update(gameID, {$set: { hostLock: event.target.hostLock.checked, host:player._id}});
+    console.log(Games.findOne(gameID));
+    console.log(player);
 
     Meteor.subscribe('games', game.accessCode);
 
     Session.set("loading", true);
     
-    Meteor.subscribe('players', game._id, function onReady(){
+    Meteor.subscribe('players', gameID, function onReady(){
       Session.set("loading", false);
 
-      Session.set("gameID", game._id);
+      Session.set("gameID", gameID);
       Session.set("playerID", player._id);
       Session.set("currentView", "lobby");
     });
@@ -346,7 +350,7 @@ Template.joinGame.events({
 
       if (game) {
         Meteor.subscribe('players', game._id);
-        player = generateNewPlayer(game, playerName);
+        player = generateNewPlayer(game._id, playerName);
 
         if (game.state === "inProgress") {
           var default_role = game.location.roles[game.location.roles.length - 1];
@@ -430,10 +434,12 @@ Template.lobby.helpers({
 Template.lobby.events({
   'click .btn-leave': leaveGame,
   'click .btn-start': function () {
-    GAnalytics.event("game-actions", "gamestart");
-
     var game = getCurrentGame();
-    Games.update(game._id, {$set: {state: 'settingUp'}});
+    if ((!game.hostLock) || getCurrentPlayer()._id === game.host) {
+      GAnalytics.event("game-actions", "gamestart");
+
+      Games.update(game._id, {$set: {state: 'settingUp'}});
+    }
   },
   'click .btn-toggle-qrcode': function () {
     $(".qrcode-container").toggle();
@@ -508,10 +514,15 @@ Template.gameView.helpers({
 Template.gameView.events({
   'click .btn-leave': leaveGame,
   'click .btn-end': function () {
-    GAnalytics.event("game-actions", "gameend");
 
     var game = getCurrentGame();
-    Games.update(game._id, {$set: {state: 'waitingForPlayers'}});
+
+    if ((!game.hostLock) || getCurrentPlayer()._id === game.host) {
+      console.log(game);
+      GAnalytics.event("game-actions", "gameend");
+
+      Games.update(game._id, {$set: {state: 'waitingForPlayers'}});
+    }
   },
   'click .btn-toggle-status': function () {
     $(".status-container-content").toggle();
@@ -520,13 +531,15 @@ Template.gameView.events({
     var game = getCurrentGame();
     var currentServerTime = TimeSync.serverTime(moment());
 
-    if(game.paused){
-      GAnalytics.event("game-actions", "unpause");
-      var newEndTime = game.endTime - game.pausedTime + currentServerTime;
-      Games.update(game._id, {$set: {paused: false, pausedTime: null, endTime: newEndTime}});
-    } else {
-      GAnalytics.event("game-actions", "pause");
-      Games.update(game._id, {$set: {paused: true, pausedTime: currentServerTime}});
+    if ((!game.hostLock) || getCurrentPlayer()._id === game.host) {
+      if(game.paused){
+        GAnalytics.event("game-actions", "unpause");
+        var newEndTime = game.endTime - game.pausedTime + currentServerTime;
+        Games.update(game._id, {$set: {paused: false, pausedTime: null, endTime: newEndTime}});
+      } else {
+        GAnalytics.event("game-actions", "pause");
+        Games.update(game._id, {$set: {paused: true, pausedTime: currentServerTime}});
+      }
     }
   },
   'click .player-name': function (event) {
@@ -544,34 +557,12 @@ Template.gameView.events({
 });
 
 Template.statusMessage.helpers({
-  game: getCurrentGame,
-  players: function () {
-    var game = getCurrentGame();
-    
-    if (!game){
-      return null;
-    }
-
-    var players = Players.find({
-      'gameID': game._id
-    });
-
-    return players;
-  },
-  gameFinished: function () {
-    var timeRemaining = getTimeRemaining();
-
-    return timeRemaining === 0;
-  },
-
   getStatusMessage: function() {
     TimeRemaining = getTimeRemaining();
     if (TimeRemaining <= 0) {
       return TAPi18n.__("ui.game finished");
     } else if (getCurrentGame().paused) {
       return TAPi18n.__("ui.paused");
-    } else {
-      return "test"
     }
   }
 });
