@@ -286,7 +286,10 @@ Template.createGame.events({
     }
 
     var game = generateNewGame();
+    game.hostLock = event.target.hostLock.checked;
+
     var player = generateNewPlayer(game, playerName);
+    game.host = player;
 
     Meteor.subscribe('games', game.accessCode);
 
