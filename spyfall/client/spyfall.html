@@ -86,7 +86,9 @@
     {{#each players }}
       <li>
         {{ name }}
-
+        {{#if isHost}}
+          <i class="icon-host fa fa-gavel"></i>
+        {{/if}}
         {{#if isCurrent }}
           <a href="#" class="btn-edit-player" data-player-id="{{ _id }}">
             <i class="fa fa-pencil"></i>

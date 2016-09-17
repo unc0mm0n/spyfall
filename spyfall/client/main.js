@@ -428,6 +428,9 @@ Template.lobby.helpers({
       if (player._id === currentPlayer._id){
         player.isCurrent = true;
       }
+      if (player._id === game.host) {
+        player.isHost = true;
+      }
     });
 
     return players;
