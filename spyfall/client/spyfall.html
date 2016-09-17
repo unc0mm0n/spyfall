@@ -111,6 +111,8 @@
 <template name="gameView">
   <h4><a class="game-countdown {{#if gameFinished }}finished{{/if}} {{#if game.paused }}paused{{/if}}">{{{ timeRemaining }}}</a></h4>
 
+  {{> statusMessage }}
+
   <div class="status-container">
     <button class="btn-toggle-status">{{_ "ui.show hide" }}</button>
 
@@ -249,4 +251,8 @@
     <br>
     <a href="https://github.com/evanbrumley/spyfall" target="_blank">https://github.com/evanbrumley/spyfall</a>
   </div>
+</template>
+
+<template name="statusMessage">
+  <h4 class='status-message'> {{{getStatusMessage}}} </h4>
 </template>

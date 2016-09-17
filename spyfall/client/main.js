@@ -542,3 +542,36 @@ Template.gameView.events({
     event.target.className = 'location-name';
   }
 });
+
+Template.statusMessage.helpers({
+  game: getCurrentGame,
+  players: function () {
+    var game = getCurrentGame();
+    
+    if (!game){
+      return null;
+    }
+
+    var players = Players.find({
+      'gameID': game._id
+    });
+
+    return players;
+  },
+  gameFinished: function () {
+    var timeRemaining = getTimeRemaining();
+
+    return timeRemaining === 0;
+  },
+
+  getStatusMessage: function() {
+    TimeRemaining = getTimeRemaining();
+    if (TimeRemaining <= 0) {
+      return TAPi18n.__("ui.game finished");
+    } else if (getCurrentGame().paused) {
+      return TAPi18n.__("ui.paused");
+    } else {
+      return "test"
+    }
+  }
+});
