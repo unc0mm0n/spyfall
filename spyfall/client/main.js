@@ -411,6 +411,17 @@ Template.lobby.helpers({
   accessLink: function () {
     return getAccessLink();
   },
+  currentPlayerCanKick: function() {
+    var player = getCurrentPlayer();
+    var game = getCurrentGame();
+
+    if (!player || !game || ! game.hostLock) {
+      console.log("returning false");
+      return true;
+    }
+    console.log("returning "+player._id === game.host);
+    return (player._id === game.host);
+  },
   player: function () {
     return getCurrentPlayer();
   },
@@ -428,7 +439,7 @@ Template.lobby.helpers({
       if (player._id === currentPlayer._id){
         player.isCurrent = true;
       }
-      if (player._id === game.host) {
+      if (game.hostLock && player._id === game.host) {
         player.isHost = true;
       }
     });
